@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Downloader</title>
+    <meta
+      name="description"
+      content="Download your favorite YouTube videos or audio in seconds!"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- For Alerts -->
+    <!-- Bootstrap Icons CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-6 px-8">
+      <div class="w-100 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <i class="bi bi-send-fill"></i>
+          <!-- Paper Plane Icon -->
+          <div>
+            <h1 class="text-xl font-bold">Magnifly</h1>
+            <p class="text-sm">YouTube downloader</p>
+          </div>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white rounded-full text-black p-2"
+        >
+          <i class="bi bi-github"></i> <a href="">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-10">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <!-- Step 1: URL input -->
+        <div id="input-section" class="text-center">
+          <label for="url" class="block text-lg font-medium text-gray-700"
+            >Enter YouTube URL:</label
+          > <span> Example: https://www.youtube.com/watch?v=hVEZYEYctSc</span>
+          <input
+            type="text"
+            id="url"
+            name="url"
+            class="w-full mt-2 p-4 border border-gray-300 rounded-lg shadow-sm"
+            placeholder="Paste YouTube URL here"
+            required
+          />
+          <button
+            id="search-btn"
+            onclick="searchVideo()"
+            class="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+           <span><i class="bi bi-search"></i></span>
+            Search
+          </button>
+        </div>
+
+        <!-- Step 2: Display card with video details -->
+        <div id="video-card" class="mt-10 hidden">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Left column: Thumbnail and Title -->
+            <div class="flex flex-col items-center">
+              <img
+                id="thumbnail"
+                class="w-full h-54 object-contain rounded-lg shadow-md"
+                src=""
+                alt="Video Thumbnail"
+                loading="lazy"
+              />
+              <p
+                id="video-title"
+                class="mt-4 text-xl font-semibold text-gray-800 text-center"
+              ></p>
+            </div>
+
+            <!-- Right column: Quality, Format, and Download button -->
+            <div class="flex flex-col justify-center">
+              <div>
+                <label
+                  for="quality"
+                  class="block text-lg font-medium text-gray-700"
+                  >Select Quality:</label
+                >
+                <select
+                  id="quality"
+                  name="quality"
+                  class="w-full mt-2 p-3 border border-gray-300 rounded-lg"
+                >
+                  <option value="best">Best Available</option>
+                  <option value="22">720p</option>
+                  <option value="18">360p</option>
+                </select>
+              </div>
+
+              <div class="mt-6">
+                <label
+                  for="download_type"
+                  class="block text-lg font-medium text-gray-700"
+                  >Download Type:</label
+                >
+                <select
+                  id="download_type"
+                  name="download_type"
+                  class="w-full mt-2 p-3 border border-gray-300 rounded-lg"
+                >
+                  <option value="video">Video</option>
+                  <option value="audio">Audio</option>
+                </select>
+              </div>
+
+              <button
+                onclick="downloadVideo()"
+                class="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+              >
+                <span><i class="bi bi-cloud-download-fill"></i></span>
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Info Section (Images and Descriptions) -->
+    <div class="container mx-auto px-4 py-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="/static/icons/youtube.png"
+            alt="Video Download"
+            class="w-full h-48 object-contain rounded-lg"
+          />
+          <h3 class="text-xl font-semibold mt-4 text-gray-800">
+            Fast Video Download
+          </h3>
+          <p class="text-gray-600 mt-2">
+            Download YouTube videos in the best quality, in seconds, directly to
+            your device.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="/static/icons/music.png"
+            alt="Audio Download"
+            class="w-full h-48 object-contain rounded-lg"
+          />
+          <h3 class="text-xl font-semibold mt-4 text-gray-800">Audio Only</h3>
+          <p class="text-gray-600 mt-2">
+            Get only the audio from your favorite YouTube videos and save them
+            as high-quality files.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="/static/icons/easy.png"
+            alt="Easy to Use"
+            class="w-full h-48 object-contain rounded-lg"
+          />
+          <h3 class="text-xl font-semibold mt-4 text-gray-800">
+            Simple Interface
+          </h3>
+          <p class="text-gray-600 mt-2">
+            Our tool makes downloading YouTube videos as simple as pasting a
+            URL.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 YouTube Downloader - All rights reserved</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      function searchVideo() {
+        const url = document.getElementById("url").value;
+        const videoCard = document.getElementById("video-card");
+        const inputSection = document.getElementById("input-section");
+
+        if (url) {
+          inputSection.style.display = "none";
+          videoCard.style.display = "block";
+
+          fetch(`/get_video_details?url=${encodeURIComponent(url)}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.thumbnail_url) {
+                document.getElementById("thumbnail").src = data.thumbnail_url;
+                document.getElementById("video-title").textContent =
+                  data.title || "Video Title";
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Error fetching video details!",
+                });
+              }
+            })
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Error fetching video details!",
+              });
+            });
+        }
+      }
+
+      function downloadVideo() {
+        const url = document.getElementById("url").value;
+        const quality = document.getElementById("quality").value;
+        const downloadType = document.getElementById("download_type").value;
+
+        fetch(`/download`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            url: url,
+            quality: quality,
+            download_type: downloadType,
+          }),
+        })
+          .then((response) => {
+            // Extract the filename from the Content-Disposition header
+            const disposition = response.headers.get("Content-Disposition");
+            let filename = "downloaded_file"; // default filename
+
+            if (disposition && disposition.indexOf("attachment") !== -1) {
+              const matches = disposition.match(/filename="([^"]+)"/);
+              if (matches != null && matches[1]) {
+                filename = matches[1];
+              }
+            }
+
+            return response.blob().then((blob) => ({ filename, blob }));
+          })
+          .then(({ filename, blob }) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = filename; // Set filename from the backend response
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: "error",
+              title: "Download Failed",
+              text: err.message,
+            });
+          });
+      }
+    </script>
+  </body>
+</html>

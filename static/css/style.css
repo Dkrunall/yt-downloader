@@ -1,0 +1,177 @@
+/* Body and General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #333; /* Light black color for the header */
+    color: #fff;
+    padding: 30px 20px;
+    border-bottom: 2px solid #555; /* Add bottom border for sharp look */
+    transition: background-color 0.3s ease;
+}
+
+header:hover {
+    background-color: #444; /* Slightly lighter shade for hover effect */
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+i.bi.bi-send-fill {
+    font-size: 35px;
+}
+
+/* Main Content Section */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+input[type="text"], select, button {
+    border-radius: 8px; /* Smooth rounded corners */
+    border: 2px solid #e0e4e8;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, select:focus, button:focus {
+    outline: none;
+    border-color: #333; /* Dark border color for focus effect */
+}
+
+button {
+    background-color: #333; /* Light black color for buttons */
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #444; /* Border for buttons */
+}
+
+button:hover {
+    background-color: #444; /* Lighter black color on hover */
+}
+
+button:disabled {
+    background-color: #d0d8e3;
+    cursor: not-allowed;
+}
+
+/* Input Section: URL Entry */
+#input-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Card Layout */
+#video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#video-card .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Video Thumbnail */
+#thumbnail {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Title */
+#video-title {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Select Options & Labels */
+select, label {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Card for Extra Information */
+.card-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card-info:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-info img {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333; /* Light black color for footer */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+footer:hover {
+    background-color: #444; /* Lighter black color on hover */
+}
+
+/* SweetAlert Customization */
+.swal2-popup {
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.swal2-title {
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #video-card .grid {
+        grid-template-columns: 1fr; /* Stack columns on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px; /* Smaller font size for header on smaller screens */
+    }
+}
