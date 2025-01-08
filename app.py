@@ -75,10 +75,10 @@ def download():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Basic health check route
+# Route to display the main page (index.html)
 @app.route('/')
-def home():
-    return jsonify({"message": "YouTube Downloader API is running!"})
+def index():
+    return render_template('index.html')  # This renders index.html when you visit the root URL
 
 # Ensure downloads directory exists
 if __name__ == "__main__":
